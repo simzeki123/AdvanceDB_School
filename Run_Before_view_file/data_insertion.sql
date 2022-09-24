@@ -73,9 +73,9 @@ CREATE TABLE members(
 	email 		VARCHAR(30) NOT NULL,
 	phoneNumber	VARCHAR(15),
 	registeredDate 	DATE DEFAULT sysdate,
+	area      VARCHAR(30),
 	status 		VARCHAR(15),
 	CONSTRAINT ChkStatus CHECK (status IN ('Eligible', 'Not Eligible')),
-	area      VARCHAR(30),
 	PRIMARY KEY(memberID)
 );
 
