@@ -47,7 +47,9 @@ CREATE TABLE order_details(
 	orderID 		CHAR(5),
 	orderQty 		NUMBER(2),
 	priceEach 		NUMBER(5,2),
-	PRIMARY KEY(bookID,orderID)
+	PRIMARY KEY(bookID,orderID),
+	CONSTRAINT bookIDInOrderDetails FOREIGN KEY(bookID) REFERENCES books(bookID),
+	CONSTRAINT orderIDInOrderDetails FOREIGN KEY(orderID) REFERENCES orders(orderID) 
 );
 
 CREATE TABLE authors(
@@ -95,6 +97,8 @@ CREATE TABLE borrow_details(
 	daysLate 		NUMBER(5) DEFAULT 0,
 	totalFine 		NUMBER(7,2) DEFAULT 0,
 	dateReturned  	DATE DEFAULT sysdate,
+	CONSTRAINT bookIDInBorrowDetails FOREIGN KEY(bookID) REFERENCES books(bookID),
+	CONSTRAINT borrowingsIDInBorrowDetails FOREIGN KEY(borrowingsID) REFERENCES borrowings(borrowingsID),
 	CONSTRAINT borrow_details_COMP_NAME PRIMARY KEY(bookID, borrowingsID)
 );
 
@@ -1034,7 +1038,7 @@ INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateRet
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0038', 'BS078', '31-Aug-2021', 0, 0, '30-Aug-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0117', 'BS122', '04-Sep-2021', 0, 0, '02-Sep-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0098', 'BS072', '20-Oct-2021', 0, 0, '15-Oct-2021')
-INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0006', 'BS009', '16-Nov-2021', 0, 0, '13-Nov-2021')
+INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0006', 'BS009', '16-Nov-2021', 0, 0, '13-Nov-2021')	
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0086', 'BS009', '16-Nov-2021', 0, 0, '13-Nov-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0002', 'BS009', '16-Nov-2021', 0, 0, '13-Nov-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0083', 'BS149', '21-Nov-2021', 0, 0, '18-Nov-2021')
@@ -1231,7 +1235,7 @@ INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateRet
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0033', 'BS025', '05-Aug-2021', 0, 0, '02-Aug-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0023', 'BS028', '04-Jan-2022', 0, 0, '01-Jan-2022')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0035', 'BS008', '19-Oct-2021', 0, 0, '16-Oct-2021')
-INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0135', 'BS008', '19-Oct-2021', 0, 0, '14-Oct-2021')
+INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0115', 'BS008', '19-Oct-2021', 0, 0, '14-Oct-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0018', 'BS036', '24-Dec-2021', 0, 0, '24-Dec-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0118', 'BS036', '24-Dec-2021', 0, 0, '24-Dec-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0037', 'BS019', '17-Aug-2021', 0, 0, NULL)
@@ -1317,13 +1321,13 @@ INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateRet
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0002', 'BS113', '05-Jan-2022', 0, 0, '05-Jan-2022')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0035', 'BS125', '06-Jun-2022', 0, 0, '02-Jun-2022')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0089', 'BS137', '16-Mar-2022', 0, 0, '10-Mar-2021')
-INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0135', 'BS137', '16-Mar-2022', 0, 0, '10-Mar-2021')
+INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0119', 'BS137', '16-Mar-2022', 0, 0, '10-Mar-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0044', 'BS138', '06-Aug-2021', 0, 0, '05-Aug-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0035', 'BS145', '18-Mar-2021', 0, 0, '14-Mar-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0109', 'BS145', '18-Mar-2021', 0, 0, '14-Mar-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0031', 'BS160', '02-Apr-2022', 0, 0, '02-Apr-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0047', 'BS160', '02-Apr-2022', 0, 0, '02-Apr-2021')
-INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0135', 'BS055', '07-Nov-2021', 0, 0, '05-Nov-2021')
+INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0006', 'BS055', '07-Nov-2021', 0, 0, '05-Nov-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0113', 'BS127', '11-Aug-2021', 0, 0, '11-Aug-2021')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0004', 'BS152', '09-Jun-2022', 0, 0, '09-Jun-2022')
 INTO Borrow_details (bookID, borrowingsID, dateDue, daysLate, totalFine, dateReturned) VALUES ('B0007', 'BS070', '06-Aug-2021', 0, 0, '04-Aug-2021')
