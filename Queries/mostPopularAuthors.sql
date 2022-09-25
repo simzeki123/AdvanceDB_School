@@ -3,7 +3,7 @@ set linesize 140;
 set pagesize 50;
 
 -- Top 5 Most popular author based on number of times books were borrowed
-CREATE OR REPLACE PROCEDURE popular_author(year NUMBER) AS
+CREATE OR REPLACE PROCEDURE popular_author AS
 
     v_totalborrowing    number(5);
     v_authorName        authors.name%TYPE;
@@ -41,9 +41,9 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('                                                  ');
         dbms_output.put_line(rpad('=', 65, '='));
     
-        DBMS_OUTPUT.PUT_LINE(rpad('REPORT COMPLETED', 32) || lpad('Generated ON ', 23) || SYSDATE);
+        DBMS_OUTPUT.PUT_LINE(rpad('REPORT COMPLETED', 32) || lpad('Generated ON ', 25) || SYSDATE);
 
 END;
 /
 
-exec popular_author(2001)
+exec popular_author()

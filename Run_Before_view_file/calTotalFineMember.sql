@@ -1,12 +1,4 @@
-SELECT
-    borrowings.memberID,
-    sum(borrow_details.totalFine)
-FROM
-    borrow_details
-    INNER JOIN borrowings ON borrowings.borrowingsID = borrow_details.borrowingsID
-GROUP BY borrowings.memberID;
-
-DECLARE 
+CREATE OR REPLACE PROCEDURE calTotalFineMember AS
     v_memberID borrowings.memberID%TYPE;
     totalAccumulatedFine borrow_details.totalFine%TYPE;
         
