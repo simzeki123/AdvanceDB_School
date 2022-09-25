@@ -1,0 +1,6 @@
+CREATE OR REPLACE TRIGGER cap_loan
+AFTER UPDATE ON Borrow_details
+REFERENCING OLD AS OLD NEW AS NEW
+FOR EACH ROW
+BEGIN
+    IF borrow_details.totalfine >
