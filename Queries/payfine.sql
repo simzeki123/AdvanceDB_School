@@ -1,3 +1,4 @@
+SET SERVEROUTPUT ON;
 CREATE OR REPLACE PROCEDURE payFine(in_MemberID in borrowings.memberID%TYPE,in_BookID in borrow_details.BOOKID%TYPE) IS
 
     v_todaydate DATE;
@@ -82,9 +83,6 @@ BEGIN
             dateReturned = SYSDATE
             WHERE borrowingsID = v_borrowingsID;
         END IF;
-    
-    
-    
 END;
 
 /
