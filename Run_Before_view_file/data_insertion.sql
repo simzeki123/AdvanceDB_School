@@ -75,6 +75,7 @@ CREATE TABLE members(
 	registeredDate 	DATE DEFAULT sysdate,
 	area      VARCHAR(30),
 	status 		VARCHAR(15),
+	totalfineMember NUMBER(7,2) DEFAULT 0,
 	CONSTRAINT ChkStatus CHECK (status IN ('Eligible', 'Not Eligible')),
 	PRIMARY KEY(memberID)
 );
