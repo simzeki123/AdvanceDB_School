@@ -84,8 +84,4 @@ BEGIN
             WHERE borrowingsID = v_borrowingsID;
         END IF;
 END;
-
 /
-
-
-    
