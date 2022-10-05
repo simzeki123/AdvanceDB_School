@@ -38,6 +38,10 @@ BEGIN
         UPDATE members
         SET status = 'Not Eligible'
         WHERE memberID = v_memberID;
+
+        Update Borrow_details
+        SET totalfine = 0
+        WHERE totalfine IS NULL
         
         DBMS_OUTPUT.PUT_LINE('Borrowings ID : ' || v_borrowingsID);
         DBMS_OUTPUT.PUT_LINE('Date Due : '||  v_dateDue);
