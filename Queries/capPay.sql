@@ -24,8 +24,6 @@ AFTER STATEMENT IS
     v_priceEach order_details.priceEach%TYPE;
     v_totalfine Borrow_details.totalfine%TYPE;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE(t_borrowDetails.COUNT);
-
     FOR INDX IN 1 .. t_borrowDetails.COUNT
     LOOP
         select order_details.priceEach into v_priceEach
